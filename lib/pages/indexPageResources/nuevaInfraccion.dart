@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:enlacessp/pages/Animation/FadeAnimation.dart';
+import 'package:enlacessp/pages/indexPageResources/draw_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 // ignore: camel_case_types
@@ -31,7 +31,6 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
     _apellidoPaterno.dispose();
     _apellidoMaterno.dispose();
     _obtenercurp.dispose();
-    _inputFechaNacimiento.dispose();
     _calle.dispose();
     _numeroExterior.dispose();
     _numeroInterior.dispose();
@@ -47,141 +46,33 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
   Future _getImage() async {
     // ignore: deprecated_member_use
     File image = await ImagePicker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      File cropped = await ImageCropper.cropImage(
-          sourcePath: image.path,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          compressQuality: 100,
-          maxWidth: 700,
-          maxHeight: 700,
-          compressFormat: ImageCompressFormat.jpg,
-          androidUiSettings: AndroidUiSettings(
-              toolbarTitle: 'Foto de Infraccion 1',
-              toolbarColor: Color.fromRGBO(30, 42, 82, 3),
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          iosUiSettings: IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
-
-      this.setState(() {
-        _image = cropped;
-      });
-    } else {
-      this.setState(() {});
-    }
+    this.setState(() {
+      _image = image;
+    });
   }
 
   Future _getImage2() async {
     // ignore: deprecated_member_use
-    File image = await ImagePicker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      File cropped = await ImageCropper.cropImage(
-          sourcePath: image.path,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          compressQuality: 100,
-          maxWidth: 700,
-          maxHeight: 700,
-          compressFormat: ImageCompressFormat.jpg,
-          androidUiSettings: AndroidUiSettings(
-              toolbarTitle: 'Foto de Infraccion 2',
-              toolbarColor: Color.fromRGBO(30, 42, 82, 3),
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          iosUiSettings: IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
-
-      this.setState(() {
-        _image2 = cropped;
-      });
-    } else {
-      this.setState(() {});
-    }
+    File image2 = await ImagePicker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      _image2 = image2;
+    });
   }
 
   Future _getImage3() async {
     // ignore: deprecated_member_use
-    File image = await ImagePicker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      File cropped = await ImageCropper.cropImage(
-          sourcePath: image.path,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          compressQuality: 100,
-          maxWidth: 700,
-          maxHeight: 700,
-          compressFormat: ImageCompressFormat.jpg,
-          androidUiSettings: AndroidUiSettings(
-              toolbarTitle: 'Foto de Placa',
-              toolbarColor: Color.fromRGBO(30, 42, 82, 3),
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          iosUiSettings: IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
-
-      this.setState(() {
-        _image3 = cropped;
-      });
-    } else {
-      this.setState(() {});
-    }
+    File image3 = await ImagePicker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      _image3 = image3;
+    });
   }
 
   Future _getImage4() async {
     // ignore: deprecated_member_use
-    File image = await ImagePicker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      File cropped = await ImageCropper.cropImage(
-          sourcePath: image.path,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
-          compressQuality: 100,
-          maxWidth: 700,
-          maxHeight: 700,
-          compressFormat: ImageCompressFormat.jpg,
-          androidUiSettings: AndroidUiSettings(
-              toolbarTitle: 'Foto Licencia',
-              toolbarColor: Color.fromRGBO(130, 42, 82, 3),
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          iosUiSettings: IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
-
-      this.setState(() {
-        _image4 = cropped;
-      });
-    } else {
-      this.setState(() {});
-    }
+    File image4 = await ImagePicker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      _image4 = image4;
+    });
   }
 
   List _myActivities;
@@ -213,42 +104,42 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
   TextEditingController _otroBeneficio = new TextEditingController();
   TextEditingController _cantidad = new TextEditingController();
   TextEditingController _observaciones = new TextEditingController();
-  String _generoBeneficiairo;
-  String _tipoLicencia;
-  String _claseVehiculo;
-  String _tipodebeneficiarioTEDC;
-  String _tipodebeneficioTEDC;
-  List _discapacidad;
-//================================Controladores=========================================
+
+  //================================Controladores=========================================
 
   String _fecha = '';
-  String _opcionSeleccionadaLicencia = 'Licencia1';
-
-  String _opcionSeleccionadaTipoBeneficiario = 'Desempleado';
-  String _opcionSeleccionadaTipoBeneficio = 'Alimenticio';
-  String _opcionSeleccionadaClaseVehiculo = 'Clase1';
-  List<String> _sexoBeneficiario = ['Masculino', 'Femenino'];
-  List<String> _indigenaBeneficiario = ['NO', 'SI'];
-  List<String> _tipodeLicencia = ['Licencia1', 'Licencia2', 'Licencia3'];
-  List<String> _claseDeVehiculo = ['Clase1', 'Clase2', 'Clase3'];
-  List<String> _tipoDeBeneficiario = [
-    'Adulto Mayor',
-    'Desempleado',
-    'Mujer Embarazada',
-    'Niño',
-    'Persona con discapacidad',
-    'Salud',
-    'Otro'
+  String _tipoLicencia;
+  String _claseVehiculo;
+  String _empresaSeleccionada;
+  String _corralonSeleccionado;
+  String _opcionSeleccionadaLicencia = 'AUTOMOVILISTA';
+  String _opcionSeleccionadaClaseVehiculo = 'Motoneta';
+  String _opcionSeleccionadaEmpresa = 'GRUAS MONARCA';
+  String _opcionSeleccionadaCorralon = 'SALIDA A CHARO';
+  List<String> _tipodeLicencia = [
+    'AUTOMOVILISTA',
+    'CHOFER',
+    'MOTOCICLISTA',
+    'SERVICIO PUBLICO'
   ];
-  List<String> _tipoDeBeneficio = ['Alimenticio', 'Otro'];
-  TextEditingController _inputFechaNacimiento = new TextEditingController();
+  List<String> _corralon = ['SALIDA A CHARO'];
+  List<String> _claseDeVehiculo = [
+    'Motoneta',
+    'Cuatrimoto',
+    'Hatchback',
+    "Sedan",
+    "Familiar",
+    "Crossover",
+    "Suv"
+  ];
+  List<String> _empresa = ['GRUAS MONARCA', 'GRUAS VELAZQUEZ'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(30, 42, 82, 3),
-        title: Text('Registrar Beneficiario'),
+        title: Text('Registrar Infraccion'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -298,8 +189,18 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
                   Divider(),
                   _observacionesInput(),
                   Divider(),
+                  _montoInput(),
+                  Divider(),
+                  _labelEmpresa(),
+                  _empresaInput(),
+                  Divider(),
+                  _labelCorralon(),
+                  _corralonInput(),
+                  Divider(),
                   _labelFotos(),
                   _camaraInput(),
+                  Divider(),
+                  _firmaButton(),
                   Divider(),
                   _labelSubmit(),
                   _submitInput(),
@@ -946,6 +847,161 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
     );
   }
 
+  Widget _montoInput() {
+    return Container(
+      child: TextFormField(
+        autofocus: false,
+        textCapitalization: TextCapitalization.sentences,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue[800], width: 2.0),
+              borderRadius: BorderRadius.circular(20.0)),
+          enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Color.fromRGBO(30, 42, 82, 3), width: 2.0),
+              borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Monto',
+          labelText: 'Monto a Pagar',
+          labelStyle: TextStyle(
+            color: Color.fromRGBO(30, 42, 82, 3),
+          ),
+          suffixIcon: Icon(
+            FontAwesomeIcons.coins,
+            color: Color.fromRGBO(30, 42, 82, 3),
+          ),
+        ),
+        validator: (value) {
+          if (value.length < 3) {
+            return 'Porfavor Ingrese el monto';
+          } else {
+            return null;
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _labelEmpresa() {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        "Seleccione Empresa de Grua",
+        style: TextStyle(
+            color: Color.fromRGBO(30, 42, 82, 3), fontWeight: FontWeight.bold),
+      ),
+      width: 300.0,
+      height: 35.0,
+    );
+  }
+
+  Widget _empresaInput() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Icon(
+          FontAwesomeIcons.idCard,
+          color: Color.fromRGBO(30, 42, 82, 3),
+        ),
+        SizedBox(width: 30.0),
+        Expanded(
+          child: DropdownButtonHideUnderline(
+            child: ButtonTheme(
+              alignedDropdown: true,
+              child: DropdownButton<String>(
+                value: _opcionSeleccionadaEmpresa,
+                iconSize: 30.0,
+                icon: (null),
+                style: TextStyle(
+                    color: Color.fromRGBO(30, 42, 82, 3),
+                    fontWeight: FontWeight.bold),
+                hint: Text("Selecciona una Opcion"),
+                onChanged: (opt) {
+                  setState(() {
+                    _opcionSeleccionadaEmpresa = opt;
+                    _empresaSeleccionada = _opcionSeleccionadaEmpresa;
+                  });
+                },
+                items: getOpcionesEmpresa(),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<String>> getOpcionesEmpresa() {
+    List<DropdownMenuItem<String>> lista = new List();
+    _empresa.forEach((empresa) {
+      lista.add(DropdownMenuItem(
+        child: Text(empresa),
+        value: empresa,
+      ));
+    });
+    return lista;
+  }
+
+  Widget _labelCorralon() {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        "Seleccione Corralon",
+        style: TextStyle(
+            color: Color.fromRGBO(30, 42, 82, 3), fontWeight: FontWeight.bold),
+      ),
+      width: 300.0,
+      height: 35.0,
+    );
+  }
+
+  Widget _corralonInput() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Icon(
+          FontAwesomeIcons.idCard,
+          color: Color.fromRGBO(30, 42, 82, 3),
+        ),
+        SizedBox(width: 30.0),
+        Expanded(
+          child: DropdownButtonHideUnderline(
+            child: ButtonTheme(
+              alignedDropdown: true,
+              child: DropdownButton<String>(
+                value: _opcionSeleccionadaCorralon,
+                iconSize: 30.0,
+                icon: (null),
+                style: TextStyle(
+                    color: Color.fromRGBO(30, 42, 82, 3),
+                    fontWeight: FontWeight.bold),
+                hint: Text("Selecciona una Opcion"),
+                onChanged: (opt) {
+                  setState(() {
+                    _opcionSeleccionadaCorralon = opt;
+                    _corralonSeleccionado = _opcionSeleccionadaCorralon;
+                  });
+                },
+                items: getOpcionesCorralon(),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<String>> getOpcionesCorralon() {
+    List<DropdownMenuItem<String>> lista = new List();
+    _corralon.forEach((_corralon) {
+      lista.add(DropdownMenuItem(
+        child: Text(_corralon),
+        value: _corralon,
+      ));
+    });
+    return lista;
+  }
+
   Widget _labelSubmit() {
     return Container(
       alignment: Alignment.center,
@@ -1082,6 +1138,30 @@ class _NuevaInfraccionState extends State<NuevaInfraccion> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _firmaButton() {
+    return Container(
+      height: 50,
+      width: MediaQuery.of(context).size.width * 0.90,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(29, 43, 82, 3),
+            Color.fromRGBO(29, 43, 82, .9),
+          ])),
+      child: FlatButton(
+        child: Text(
+          "Firma del conductor",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => Draw(),
+          ));
+        },
       ),
     );
   }
