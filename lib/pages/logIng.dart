@@ -5,32 +5,48 @@ import 'homePage.dart';
 
 class logIn extends StatelessWidget {
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 255, 255, 3),
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage("assets/images/bottombg.png"),
-          fit: BoxFit.fitWidth,
-          alignment: Alignment.bottomLeft,
-        )),
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 380,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/backgroundssp.png'),
-                        fit: BoxFit.fill)),
-              ),
-              Padding(
-                padding: EdgeInsets.all(30.0),
-                child: Column(
-                  children: <Widget>[
-                    FadeAnimation(
-                      1.8,
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      'assets/images/bgMaterialBlue.png',
+                    ),
+                    fit: BoxFit.cover,
+                    repeat: ImageRepeat.noRepeat)),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 450,
+                  child: Stack(
+                    children: <Widget>[
+                      Center(
+                        child: FadeAnimation(
+                            1.5,
+                            SizedBox(
+                              width: 300,
+                              child: Container(
+                                margin: EdgeInsets.only(top: 50),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/SSPLOGO.png'))),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
@@ -74,52 +90,45 @@ class logIn extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    FadeAnimation(
-                        2,
-                        Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width * 0.90,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Color.fromRGBO(29, 43, 82, 3),
-                                Color.fromRGBO(29, 43, 82, .9),
-                              ])),
-                          child: FlatButton(
-                            child: Text(
-                              "Ingresar",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      FadeAnimation(
+                          2,
+                          Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width * 0.90,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(colors: [
+                                  Color.fromRGBO(29, 43, 82, 3),
+                                  Color.fromRGBO(29, 43, 82, 3),
+                                ])),
+                            child: FlatButton(
+                              child: Text(
+                                "Continuar",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                //_login();
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HomePage(),
+                                ));
+                              },
                             ),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ));
-                            },
-                          ),
-                        )),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    FadeAnimation(
-                        1.5,
-                        Text(
-                          "¿Has olvidado tu contraseña?",
-                          style: TextStyle(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ],
-                ),
-              )
-            ],
+                          )),
+                      SizedBox(
+                        height: 70,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
