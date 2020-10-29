@@ -14,10 +14,6 @@ class HomePage extends StatefulWidget {
       color: Color.fromRGBO(30, 42, 82, 3),
     ),
     BarItem(
-        text: "Infracciones",
-        iconos: FontAwesomeIcons.fileAlt,
-        color: Color.fromRGBO(126, 124, 127, 3)),
-    BarItem(
         text: "Notificaciones",
         iconos: FontAwesomeIcons.bell,
         color: Color.fromRGBO(16, 127, 209, 3)),
@@ -48,12 +44,9 @@ class _HomePageState extends State<HomePage> {
         return _paginaHome;
         break;
       case 1:
-        return _infraccionPage;
-        break;
-      case 2:
         return _paginaNotificaciones;
         break;
-      case 3:
+      case 2:
         return _paginaPerfil;
         break;
     }
